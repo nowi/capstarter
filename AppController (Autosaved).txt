@@ -1,0 +1,56 @@
+/*
+ * AppController.j
+ * NewApplication
+ *
+ * Created by You on February 22, 2011.
+ * Copyright 2011, Your Company All rights reserved.
+ */
+
+@import <Foundation/CPObject.j>
+
+
+@implementation AppController : CPObject
+{
+}
+
+- (void)applicationDidFinishLaunching:(CPNotification)aNotification
+{
+    var theWindow = [[CPWindow alloc] initWithContentRect:CGRectMakeZero() styleMask:CPBorderlessBridgeWindowMask],
+        contentView = [theWindow contentView];
+	
+
+[contentView setBackgroundColor:[CPColor blackColor]];
+
+	
+    [theWindow orderFront:self];
+
+
+var HUDPanel = [[CPPanel alloc] 
+    initWithContentRect:CGRectMake(0, 0, 225, 125)
+    styleMask:CPHUDBackgroundWindowMask | CPClosableWindowMask];
+
+[HUDPanel setFloatingPanel:YES];
+[HUDPanel setTitle:"Inspector"];
+var panelContentView = [HUDPanel contentView],
+    centerX = (CGRectGetWidth([panelContentView bounds]) - 135.0) / 2.0;
+
+var scaleSlider = [[CPSlider alloc] initWithFrame:CGRectMake(centerX, 13.0, 135.0, 24.0)];
+
+[scaleSlider setMinValue:50];
+[scaleSlider setMaxValue:150];
+[scaleSlider setValue:100];
+
+[panelContentView addSubview:scaleSlider];
+	
+
+
+
+
+[HUDPanel orderFront:self];
+
+
+
+
+}
+
+@end
